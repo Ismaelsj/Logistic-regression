@@ -70,7 +70,7 @@ alpha = 0.9
 old_x = np.copy(x)
 x = scaling_x(x)
 theta = gradient_descent(x, y, theta, alpha)
+print("cost : {0}".format(cost(x, y, theta)))
 theta = scaling_theta(theta, old_x)
 print("theta : {0}".format(theta))
-print("cost : {0}".format(cost(x, y, theta)))
 print("prediction : {0}".format(predict([1, 40, 90], theta)))
