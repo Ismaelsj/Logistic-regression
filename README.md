@@ -1,5 +1,14 @@
-# Logistic-regression
+# DSLR
 
-- Régression Logistic à plusieurs variables.
+Logistic Regression to predict Hogwarts Houses.
 
-Exercice tiré du MOOC d'Andrew Ng (coursera)
+	Riquieres:
+		- numpy
+		- pandas
+		- matplotlib
+
+Usage :
+	python3 logreg_train [-v]
+	python3 logreg_predict
+
+Use '-v' to viusalize cost.
