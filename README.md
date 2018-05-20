@@ -1,14 +1,14 @@
 # DSLR
 
-Logistic Regression to predict Hogwarts Houses.
+Logistic Regression to predict Hogwarts houses.
 
-	Riquieres:
+	Riquires:
 		- numpy
 		- pandas
 		- matplotlib
 
 Usage :
-	python3 logreg_train [-v]
-	python3 logreg_predict
+	- python3 logreg_train [-v]
+	- python3 logreg_predict
 
 Use '-v' to viusalize cost.
