@@ -1,6 +1,6 @@
 # DSLR
 
-'Data Science' Logistic Regression to predict Hogwarts houses.
+'Data Science', Logistic Regression to predict Hogwarts houses.
 
 	Riquires:
 		- numpy
