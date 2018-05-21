@@ -15,7 +15,7 @@ def Accuracy(theta, x_train, y_train):
             correct.append(1)
         else:
             correct.append(0)
-    accuracy = (np.sum(correct) / length)*100
+    accuracy = (np.sum(correct) / float(length))*100
     print ('Training accuracy %: {}'.format(accuracy))
 
 def plot_cost(hist_cost, hist_epoch):
@@ -37,7 +37,7 @@ def cost(x, y, theta):
     _sum = 0
     for i in range(m):
         _sum += (y[i] * np.log(sigmoid(np.dot(x[i], theta)))) + ((1 - y[i]) * np.log(1 - sigmoid(np.dot(x[i], theta))))
-    return -(1 / m) * _sum
+    return -(1 / float(m)) * _sum
 
 def gradient_descent(m, n, x, y, theta, learning_rate, house):
     tmp = np.zeros(n)
