@@ -13,4 +13,5 @@ Usage :
 	- python3 logreg_predict
 
 Use '-v' to viusalize cost.
+
 Use '-f' to viusalize features importance.
