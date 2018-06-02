@@ -37,7 +37,7 @@ def cost(x, y, theta):
     _sum = 0
     for i in range(m):
         _sum += (y[i] * np.log(sigmoid(np.dot(x[i], theta)))) + ((1 - y[i]) * np.log(1 - sigmoid(np.dot(x[i], theta))))
-    return -(1 / float(m)) * _sum
+    return -(1 / m) * _sum
 
 def gradient_descent(m, n, x, y, theta, learning_rate, house):
     tmp = np.zeros(n)
@@ -111,6 +111,8 @@ def main():
     selected_features = to_clean + to_fit
 
         # Features Scaling
+    X = x_train.copy()
+    col = list(X.columns)
     x_train, x_test = data_process.features_scaling(x_train, x_test, selected_features)
     x_train = x_train.values
     x_test = x_test.values
@@ -121,10 +123,58 @@ def main():
     theta = np.zeros((len(outputs), x_train.shape[1]))
     learning_rate = 0.6
     nb_epoch = 200
-    if len(argv) > 1 and argv[1] == '-v':
+
+
+    if (len(argv) > 1 and argv[1] == '-v') or (len(argv) > 2 and argv[2] == '-v'):
         theta = training(x_train, y_train, theta, learning_rate, nb_epoch, visu=1)
     else:
         theta = training(x_train, y_train, theta, learning_rate, nb_epoch)
+
+    if (len(argv) > 1 and argv[1] == '-f') or (len(argv) > 2 and argv[2] == '-f'):
+        houses_feature_importance = [None] * len(theta)
+        features = list(X.columns)
+        houses = ['Ravenclaw', 'Slytherin', 'Gryffindor', 'Hufflepuff']
+        n_classes = len(houses)
+        n_features = len(features) + 1
+
+            # Get houses's features importance
+        for i in range(n_classes):
+            _sum = np.sum(np.absolute(theta[i]))
+            _tmp = []
+            for j in theta[i]:
+                _tmp.append(abs(j / _sum))
+            houses_feature_importance[i] = _tmp
+
+            # Get global features importance
+        feature_importance = []
+        for i in range(n_features):
+            tmp = 0
+            for j in range(n_classes):
+                tmp += round(houses_feature_importance[j][i], 4)
+            feature_importance.append(tmp / n_classes)
+
+            # Drop bias.
+        houses_feature_importance = [i[1:] for i in houses_feature_importance]
+        feature_importance = feature_importance[1:]
+
+            # Plot features importance
+        bar_width = 0.35
+        tab = np.arange(len(feature_importance))
+        for i in range(len(theta)):
+            plt.subplot(2, 2, i + 1)
+            plt.bar(tab, feature_importance,width=bar_width, color='g', label="Global features importance")
+            plt.bar(tab + bar_width, houses_feature_importance[i], width=bar_width, color='b', label="""{}'s features importance""".format(houses[i]))
+            plt.ylim(0, 0.3)
+            plt.xticks(tab, features, rotation=90)
+            plt.legend()
+            plt.title(houses[i])
+
+        feature_importance = pd.DataFrame([i * 100 for i in feature_importance], features, columns=['%']).sort_values(['%'], ascending=False)
+        print('Global features importance :')
+        print(feature_importance)
+        plt.legend()
+        plt.show()
+
     save_model(theta)
     Accuracy(theta, x_train, y_train)
 
