@@ -8,8 +8,8 @@ Logistic Regression to predict Hogwarts Houses.
 		- matplotlib
 
 Usage :
-	- python3 logreg_train [-v][-f]
 
+	- python3 logreg_train [-v][-f]
 	- python3 logreg_predict
 
 Use '-v' to viusalize cost.
