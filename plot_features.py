@@ -57,8 +57,10 @@ def features_importance(features_name, class_name, theta, bias=True):
     class_features_importance = pd.DataFrame(class_dict, features_name).reindex(list(global_features_importance.index))
     print('Global features importance :')
     print(global_features_importance)
+    print("")
     print('Class features importance :')
     print(class_features_importance)
+    print("")
     plt.legend()
     plt.show()
 
