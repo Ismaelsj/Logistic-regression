@@ -16,7 +16,7 @@ def features_importance(features_name, class_name, theta, bias=True):
     if bias == False:
         n_features = len(features_name)
 
-        # Get classes features importance
+        # Get houses's features importance
     for i in range(n_class):
         _sum = np.sum(np.absolute(theta[i]))
         _tmp = []
@@ -50,10 +50,15 @@ def features_importance(features_name, class_name, theta, bias=True):
         plt.legend()
         plt.title(class_name[i])
 
-        # Global features importance in DataFrame
-    global_features_importance = pd.DataFrame([i * 100 for i in global_features_importance], features_name, columns=['%']).sort_values(['%'], ascending=False)
+    class_dict = {}
+    for i in range(n_class):
+        class_dict[class_name[i]] = [round(j * 100, 4) for j in class_features_importance[i]]
+    global_features_importance = pd.DataFrame([i * 100 for i in global_features_importance], features_name, columns=['Global features']).sort_values(['Global features'], ascending=False)
+    class_features_importance = pd.DataFrame(class_dict, features_name).reindex(list(global_features_importance.index))
     print('Global features importance :')
     print(global_features_importance)
+    print('Class features importance :')
+    print(class_features_importance)
     plt.legend()
     plt.show()
 
