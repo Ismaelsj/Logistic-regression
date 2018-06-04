@@ -12,6 +12,7 @@ Usage :
 	- python3 logreg_train.py [-v][-f]
 	- python3 logreg_predict.py
 	- python3 describe.py
+	- python3 histogram.py
 
 Use '-v' to viusalize cost.
 

@@ -86,6 +86,9 @@ def main():
     df_train = pd.read_csv("resources/dataset_train.csv")
     df_test = pd.read_csv("resources/dataset_test.csv")
 
+    df_train.hist()
+    plt.show()
+
         # Drop unusefull features
     x_train = df_train.drop(['Hogwarts House', 'First Name', 'Last Name', 'Birthday'], axis=1).set_index(['Index'])
     x_test = df_test.drop(['First Name', 'Last Name', 'Hogwarts House', 'Birthday'], axis=1).set_index(['Index'])
