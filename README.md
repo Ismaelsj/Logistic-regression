@@ -15,6 +15,4 @@ Usage :
 	- python3 histogram.py
 	- python3 scatter_plot.py
 
-Use '-v' to viusalize cost.
-
-Use '-f' to viusalize features importance.
+Use '-v' to viusalize cost, '-f' to viusalize features importance.
