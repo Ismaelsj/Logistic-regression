@@ -38,7 +38,7 @@ def cost(x, y, theta):
     _sum = 0
     for i in range(m):
         _sum += (y[i] * np.log(sigmoid(np.dot(x[i], theta)))) + ((1 - y[i]) * np.log(1 - sigmoid(np.dot(x[i], theta))))
-    return -(1 / m) * _sum
+    return -(1 / float(m)) * _sum
 
 def gradient_descent(m, n, x, y, theta, learning_rate, house):
     tmp = np.zeros(n)

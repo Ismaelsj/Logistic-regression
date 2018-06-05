@@ -14,8 +14,8 @@ def main():
     for feature in df_train:
         plt.subplot(4, 4, i)
         r = df_train[feature].sort_values()
-        plt.scatter(np.arange(len(r)), r)
-        plt.legend()
+        plt.scatter(np.arange(len(r)), r.values, label='{}'.format(feature))
+        plt.title(feature)
         i += 1
     plt.show()
 

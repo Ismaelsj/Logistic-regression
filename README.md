@@ -13,6 +13,7 @@ Usage :
 	- python3 logreg_predict.py
 	- python3 describe.py
 	- python3 histogram.py
+	- python3 scatter_plot.py
 
 Use '-v' to viusalize cost.
 
